@@ -1,0 +1,188 @@
+{%load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Search results</title>
+      <style>
+          .col-md-3
+          {
+          display: inline-block;
+          margin-left:-4px;
+          }
+          .carousel-indicators .active {
+          background-color: blue;
+            }
+          .col-md-3 img{
+          width:300px;
+          height:150px;
+          }
+          body .carousel-indicator li{
+          background-color: blue;
+          }
+          body .carousel-indicators{
+          bottom: 0;
+          }
+          body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+          background-color: blue;
+          }
+          .carousel-control-prev,
+          .carousel-control-next{
+           top:auto;
+           bottom:auto;
+          }
+           body .no-padding{
+           padding-left: 0,
+           padding-right: 0;
+           }
+  </style>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a  style="color:#adff2f;font-size:22px; font-weight:bold;" class="navbar-brand" href="#">Tour packages</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'home'%}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+          <a  style="color:white;" class="nav-link" href="{%url 'about'%}">AboutUs</a></li>
+
+        <li class="nav-item">
+          <a  style="color:white;" class="nav-link" href="{%url 'gallery'%}">gallery</a></li>
+
+
+
+      <li class="nav-item dropdown">
+        <a  style="color:white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Place Travel
+        </a>
+        <div style="font-color:black;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/delhi">Delhi</a>
+          <a class="dropdown-item" href="/chandigarh">Chandigarh</a>
+            <a class="dropdown-item" href="/rajasthan">Rajasthan</a>
+            <a class="dropdown-item" href="/himachal">Himachal</a>
+
+        </div>
+      </li>
+
+
+    </ul>
+
+
+    <form method="get" action="/search/" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+<div class="container">
+    <!--Slideshow starts here -->
+    {% for packages_tour, range, nslides in allpacks %}
+    <h2 class="my-4">{{packages_tour.0.category}}-Special Offers</h2>
+<div id="demo{{forloop.counter}}" class="carousel slide my-3" data-ride="carousel">
+    <ul class="carousel-indicators">
+      <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="0" class="active"></li>
+
+      {% for i in range %}
+      <li data-target="#demo" data-slide-to="{{i}}" ></li>
+      {% endfor %}
+    </ul>
+
+
+    <div class="container carousel-inner no-padding">
+
+      <div class="carousel-item active">
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 18rem;">
+            <img src='/media/{{packages_tour.0.image}}' class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{packages_tour.0.place_name}}</h5>
+                 <button style="float:right;" type="button" class="btn btn-outline-success">{{packages_tour.0.category}}</button>
+
+                <a href ="#">Rs.{{packages_tour.0.cost}}<span class="badge">Per Person</span></a>
+                <p class="card-text">{{packages_tour.0.desc |truncatechars:100}}</p>
+                <a href="/booking" class="btn btn-primary">Book now!</a>
+                 <a href="#" class="btn btn-primary">View Details</a>
+                 <ul class="list-group my-3">
+                    <li class="list-group-items">{{packages_tour.0.subcategory}}</li>
+
+                </ul>
+                    <div class="card-footer">
+                        <small class="text-muted">{{packages_tour.0.pub_date}}</small>
+                </div>
+
+            </div>
+          </div>
+       </div>
+
+         {% for i in packages_tour|slice:"1:"%}
+
+        <div class="col-xs-3 col-sm-3 col-md-3">
+          <div class="card" style="width: 18rem;">
+            <img src='/media/{{i.image}}' class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{i.place_name}}</h5>
+                <button style="float:right;" type="button" class="btn btn-outline-success">{{i.category}}</button>
+                <a href ="#">Rs.{{i.cost}}<span class="badge">Per Person</span></a>
+              <p class="card-text">{{i.desc | truncatechars:100}}</p>
+              <a href="/booking" class="btn btn-primary">Book Now!</a>
+                <a href="#" class="btn btn-primary">View Details</a>
+                <ul class="list-group my-3">
+                    <li class="list-group-items">{{i.subcategory}}</li>
+
+                </ul>
+                <div class="card-footer">
+                  <small class="text-muted">{{i.pub_date}}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 and forloop.counter > 0 and not forloop.last %}
+      </div> <div class="carousel-item">
+        {% endif %}
+
+        {% endfor %}
+    </div>
+
+
+
+
+</div>
+</div>
+
+    <!-- left and right controls for the slide -->
+    <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+    {% endfor %}
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+  <script>
+{% if msg|length != 0 %}
+alert('{{msg}}');
+window.location.href = "/"
+{% endif %}
+</script>
+  </body>
+</html>

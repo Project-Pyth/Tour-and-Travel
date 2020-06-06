@@ -1,0 +1,136 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+      <title>Himachal</title>
+      <style>
+
+
+          .col-md-3
+          {
+          display: inline-block;
+          margin-left:-4px;
+          }
+          .carousel-indicators .active {
+          background-color: blue;
+            }
+          .col-md-3 img{
+           max-width:300px;
+           height:150px;
+          }
+          body .carousel-indicator li{
+          background-color: blue;
+          }
+          body .carousel-indicators{
+          bottom: 0;
+          }
+          body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+          background-color: blue;
+          }
+          .carousel-control-prev,
+          .carousel-control-next{
+           top:auto;
+           bottom:auto;
+           padding-top:280px;
+          }
+           body .no-padding{
+           padding-left: 0,
+           padding-right: 0;
+           }
+  </style>
+  </head>
+  <body background="{%static "images/nam.jpg"%}" alt="" background-size:cover>
+<nav style="color:white;text-align:center;font-size:18px;" class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a style="color:#adff2f;font-size:22px; font-weight:bold;" class="navbar-brand" href="#">Tour and Travel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a  style="color:white;" class="nav-link" href="{%url 'home'%}">Home <span class="sr-only">(current)</span></a>
+      </li>
+        <li class="nav-item active">
+        <a  style="color:white;" class="nav-link" href="{%url 'about'%}">AboutUs</a>
+      </li>
+
+        <li class="nav-item active">
+        <a  style="color:white;" class="nav-link" href="{%url 'package'%}">Tour Packages</a>
+      </li>
+
+
+
+      <li class="nav-item dropdown">
+        <a  style="color:white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Place Travel
+        </a>
+        <div style="font-color:black;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/delhi">Delhi</a>
+          <a class="dropdown-item" href="/chandigarh">Chandigarh</a>
+            <a class="dropdown-item" href="/rajasthan">Rajasthan</a>
+            <a class="dropdown-item" href="/himachal">Himachal</a>
+
+        </div>
+      </li>
+
+
+    </ul>
+    <form method="get" action="/search/" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+  </div>
+</nav>
+
+<marquee bgcolor="#e6e6fa" behaviour="scroll"  height="50px" direction="left"><h4>Cabs from Chandigarh To Himachal,Rajasthan,Agra and Delhi</h4></marquee>
+<table class="table table-bordered my-4" style="border:1px solid black; background-color:#e6e6fa; font-color:black; font-weight:bold;">
+
+  <thead>
+
+    <tr>
+
+      <th style="font-size:24px; background-color:#00008b; color:white;  text-align:center;" scope="col">From</th>
+      <th style="font-size:24px; background-color:#00008b; color:white;  text-align:center;" scope="col">To</th>
+      <th style="font-size:24px; background-color:#00008b; color:white;  text-align:center;" scope="col">price</th>
+      <th style="font-size:24px; background-color:#00008b; color:white;  text-align:center;" scope="col">booking</a></th>
+    </tr>
+
+  </thead>
+  <tbody>
+ {% for Himachal in him %}
+    <tr>
+
+
+      <td style=" text-align:center;">{{ Himachal.source}}</td>
+      <td style=" text-align:center;">{{ Himachal.destination}}</td>
+      <td style=" text-align:center;">Rs.{{ Himachal.price}} (Per Person)</td>
+      <td style=" text-align:center;"><a href="/cab"><button class="btn btn-primary">Book Now!</button></a></td>
+    </tr>
+    <tr>
+        {% endfor %}
+
+
+  </tbody>
+
+</table>
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+
+
+</body>
+</html>

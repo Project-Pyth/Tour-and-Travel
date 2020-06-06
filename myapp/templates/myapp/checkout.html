@@ -1,0 +1,196 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+      <title>booking</title>
+      <style>
+
+
+          .col-md-3
+          {
+          display: inline-block;
+          margin-left:-4px;
+          }
+          .carousel-indicators .active {
+          background-color: blue;
+            }
+          .col-md-3 img{
+           max-width:300px;
+           height:150px;
+          }
+          body .carousel-indicator li{
+          background-color: blue;
+          }
+          body .carousel-indicators{
+          bottom: 0;
+          }
+          body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+          background-color: blue;
+          }
+          .carousel-control-prev,
+          .carousel-control-next{
+           top:auto;
+           bottom:auto;
+           padding-top:280px;
+          }
+           body .no-padding{
+           padding-left: 0,
+           padding-right: 0;
+           }
+           header{
+ 	height:650px;}
+ 	.bg{background:rgba(0,0,0,0.5);}
+           .form-container{position:absolute;color:white;top:20%;padding:30px;border-radius:10px;box-shadow:0px 0px 10px 0px #000; transform:translate(-50%,-50%);background:rgba(0,0,0,0.7);}
+  </style>
+  </head>
+  <body background="{%static "images/bil.jpg"%}" alt="" background-size:cover>
+<nav style="color:white;text-align:center;font-size:18px;" class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a style="color:#adff2f;font-size:22px; font-weight:bold;" class="navbar-brand" href="#">Tour and Travel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a  style="color:white;" class="nav-link" href="{%url 'home'%}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+          <a  style="color:white;" class="nav-link" href="{%url 'about'%}">AboutUs</a></li>
+
+        <li class="nav-item">
+          <a  style="color:white;" class="nav-link" href="{%url 'gallery'%}">gallery</a></li>
+
+ <li class="nav-item">
+          <a  style="color:white;" class="nav-link" href="{%url 'allpackages'%}">All Packs</a></li>
+
+
+
+
+    </ul>
+  </div>
+</nav>
+  <div class="container">
+
+      <div class="col my-4">
+          <h2 style="color:white;">The Details of package selected by user:</h2>
+   <table class="table">
+                  <tbody>
+
+                  <tr>
+                      <th style="color:white;">Package ID</th>
+                      <td style="color:white;">{{packages.id}}</td>
+                  </tr>
+                  <tr>
+                      <th style="color:white;">Place Name</th>
+                      <td style="color:white;">{{packages.place_name}}</td>
+                  </tr>
+                  <tr>
+                      <th style="color:white;">Package Cost</th>
+                      <td style="color:white;">{{packages.cost}}</td>
+
+				   <tr>
+                      <th style="color:white;">Package Category</th>
+                      <td style="color:white;">{{packages.category}}</td>
+                  </tr>
+				  </tbody>
+   </table>
+  </div>
+  </div>
+   <section class="container-fluid my-5">
+    <section class="row justify-content-center">
+        <section class="col-10 col-sm-5 col-md-4 text-white bg">
+    <form class="booking" action="checkout.html" method="post">
+            {% csrf_token %}
+			<div id="booking" class="section">
+		<div class="section-center my-5 ">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+						<div class="form-header">
+							<h1 class="text-center">Book your Tour</h1>
+                            <h2 class="text-right" style="font-size:16px;">Rs.{{packages.cost}}</h2>
+						</div>
+
+
+
+						<div class="form-group">
+                          <span class="form-label">Name</span>
+								<input class="form-control" type="text" id="pname" name="pname" placeholder="Your Name..."required>
+
+							</div>
+						<div class="form-group">
+                          <span class="form-label">City</span>
+								<input class="form-control" type="text" id="city" name="city" placeholder="Your city..."required>
+
+							</div>
+						<div class="form-group">
+                          <span class="form-label">Address</span>
+								<input class="form-control" type="text" id="address" name="address" placeholder="Your Address..."required>
+
+							</div>
+
+
+
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+                                      <span class="form-label">Departure Date</span>
+										<input class="form-control" type="date" id="depart_date" name="depart_date" placeholder="Depart date.." required>
+
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+                                      <span class="form-label">Arrive Date</span>
+										<input class="form-control"  type="date" id="arrive_date" name="arrive_date" placeholder="Arrive date.." required>
+
+									</div>
+								</div>
+
+							</div>
+
+									<div class="form-group">
+                                      <span style="width:400px;" class="form-label">State</span>
+										<input class="form-control" type="text" id="state" name="state" placeholder="State"required>
+
+									</div>
+
+
+							<div class="form-btn">
+								<button style="width:150px; height:50px; border-radius:10px; float:center; background-color:#8b0000; color:white;" class="submit-btn">Checkout</button>
+
+
+							</div>
+					</div>
+				</div>
+			</div>
+		</div>
+            </div>
+		</form>
+        </section>
+    </section>
+   </section>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

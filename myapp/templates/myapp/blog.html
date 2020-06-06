@@ -1,0 +1,162 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+      <title>blog</title>
+      <style>
+
+
+          .col-md-3
+          {
+          display: inline-block;
+          margin-left:-4px;
+          }
+          .carousel-indicators .active {
+          background-color: blue;
+            }
+          .col-md-3 img{
+           max-width:300px;
+           height:150px;
+          }
+          body .carousel-indicator li{
+          background-color: blue;
+          }
+          body .carousel-indicators{
+          bottom: 0;
+          }
+          body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+          background-color: blue;
+          }
+          .carousel-control-prev,
+          .carousel-control-next{
+           top:auto;
+           bottom:auto;
+           padding-top:280px;
+          }
+           body .no-padding{
+           padding-left: 0,
+           padding-right: 0;
+           }
+
+
+           input[type=text], select, textarea {
+  width:100%; /* Full width */
+  padding: 12px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+
+}
+container.h2{
+color:#8b0000;
+font-family:'Permanent Marker',cursive;
+}
+
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+  background-color:#8b0000;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Add a background color and some padding around the form */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+
+
+
+  </style>
+  </head>
+  <body background="{%static "images/lumin.jpg"%}" alt=""background-size:cover>
+<nav style="color:white;text-align:center;font-size:18px;" class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a style="color:#adff2f;font-size:22px; font-weight:bold;" class="navbar-brand" href="#">Tour and Travel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a  style="color:white;" class="nav-link" href="{%url 'home'%}">Home <span class="sr-only"></span></a>
+      </li>
+        <li class="nav-item active">
+        <a  style="color:white;" class="nav-link" href="{%url 'about'%}">AboutUs</a>
+      </li>
+
+         <li class="nav-item active">
+        <a  style="color:white;" class="nav-link" href="{%url 'package'%}">Tour Packages</a>
+      </li>
+
+         <li class="nav-item active">
+        <a  style="color:white;" class="nav-link" href="{%url 'contact'%}">ContactUs</a>
+      </li>
+
+
+
+
+
+
+
+    </ul>
+    <form method="get" action="/search/" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+  </div>
+</nav>
+  <h2 style="float:center;left:50%; font-family:cosmic sans; font-weight:bold; color:black;">Tour Blog</h2>
+
+      {% for TourPost in allPosts %}
+
+    <div style="height:350px;" class="header my-2">
+
+<div class="col-md-4">
+<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-left"style="width:1200px; top-margin:20px; position:100px; border:1px solid black;">
+        <div style="background-color:white;" class="col p-4 d-flex flex-column position-static" style="border:1px solid black;">
+          <strong class="d-inline-block mb-2 text-primary">BLOGS</strong>
+           <h3 style="color: blue;font-size:16px; text-decoration:underline;" class="mb-0">{{TourPost.title}}</h3>
+          <div class="mb-1 text-muted"> started from Rs.{{TourPost.cost}}</div>
+          <p style="color:black; size:20px; " class="card-text mb-auto">{{TourPost.description |truncatechars:100}}</p>
+            <a style="width:150px;" href="{% url 'blogpost' %} ?bid={{TourPost.id}}" role="button" class="btn btn-primary" >Continue reading </a>
+
+
+        </div>
+        <div class="panel panel-lg panel-custom">
+            <img class="bd-placeholder-img" width="500" height="250" role="img"  src="/media/{{ TourPost.Image}}">
+
+        </div>
+      </div>
+    </div>
+    </div>
+
+ </div>
+      {% endfor %}
+
+
+    </body>
+</html>

@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>About Us</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="{% static "css/about.css" %}" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+
+
+<body background="{%static "images/lake.jpg"%}" alt="" background-size:cover>
+
+
+<form class="about" action="{% url 'home'%}" method="post">
+     {% csrf_token %}
+    <div class="about-section">
+
+        <div class="inner container">
+            <h1 style="color:#8b0000;font-weight:bold;">About Us</h1>
+            <p style="font-size:22px; color:black;" class="text">Tour and travel is a website for booking the various online inbuilt and customized packages for the various categories like Family packages,Pilgrimage packages,Honeymoon Packages,Cultural packages and Advanturous packages for the online users to access the website and take advantage of booking their tours .We are here for your comfort and provide the best of the services to our users.We make the tour and travel booking process easier by providing the easy and interactive Interface to our Users. "Travel is the main thing you purchase that makes you more extravagant".We at "Tour and Travel", swear by this and put stock in satisfying travel dreams that makes you perpetually rich constantly.
+</p>
+            <div class="skills">
+               <div class="form-btn">
+								<button class="submit-btn" style="color: #fff;
+	background-color: #e35e0a;
+	font-weight: 700;
+	height: 60px;
+	padding: 10px 30px;
+	width: 100%;
+	border-radius: 40px;
+	border: none;
+	text-transform: uppercase;
+	font-size: 16px;
+	letter-spacing: 1.3px;
+	-webkit-transition: 0.2s all;
+	transition: 0.2s all;">Back To Home</button><br>
+
+
+							</div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</form>
+</body>
+</html>

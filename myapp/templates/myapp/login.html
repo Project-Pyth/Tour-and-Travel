@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Login</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="{% static "css/style1.css" %}" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+
+<body background="{%static "images/ann.jpg"%}" alt="" background-size:cover>
+
+
+
+ <div class="navbar"  style="background: rgba(0,0,0,0.7);">
+   <label class= "logo" ><img src="{%static "images/preview.png"%}" alt=""> </label>
+
+       <a href="{% url 'home'%}"> Home</a>
+ <a href="{% url 'login'%}">Login</a>
+
+      <a href="{% url 'register'%}">Register</a>
+      <a href="{% url 'gallery'%}">Gallery</a>
+     <a href="{% url 'about'%}">About Us</a><br>
+     <br>
+     <br>
+
+ </div>
+  {% for messages in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong style="color:#8b0000;">Message:</strong><b><i style="color:#8b0000;">{{messages}}</i></b>
+  <button type="button" class="close" data-dismiss="alert">
+  </button>
+</div>
+       {% endfor %}
+<div class="header">
+
+    <div class="register-form">
+<form class="container" action="login"  method="post">
+    {% csrf_token %}
+
+
+
+ <h2  style="text-decoration:underline;"><b>Login</b></h2>
+        <input type="text" placeholder="Username"  name='username' class="txtb" style="font-size:20px; color:black; font-weight:bold" required>
+            <input type="password" placeholder="Password" name='password' class="txtb" style="font-size:20px; color:black; font-weight:bold" required>
+
+                            <input type="submit" value="Login"  class="login-btn" style="font-size:20px; color:white; font-weight:bold; background-color:#8b0000;">
+    <a style="color:#8b0000;font-weight:bold;" class="b1" href="{%url 'register'%}"><h5>Create an Account</h5></a>
+
+        </form>
+
+</div>
+
+</div>
+</div>
+</html>

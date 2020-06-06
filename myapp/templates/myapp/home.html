@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tour And Travel</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" href="{% static "css/style.css" %}" type="text/css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+</head>
+
+
+
+<body background="{%static "images/lumin.jpg"%}" alt="" background-size:cover>
+
+
+
+ <div class="navbar" style=" background: rgba(0,0,0,0.7);">
+     <label class="logo"><img src="{%static "images/preview.png"%}" alt=""></label>
+
+      {% if Flag %}
+<p style="color:#fff;">
+    <span>W</span>elcome! <span>{{data}}</span>
+				</p>
+				{% endif %}
+
+ <a href="{% url 'home' %}"> Home</a>
+     <a href="{% url 'login'%}">Login</a>
+
+
+        {% if Flag %}
+     <a href="/logout">Logout</a>
+     {% endif %}
+
+  <a href="{% url 'register'%}">Register</a>
+     <a href="{% url 'package'%}">Tour Packages</a>
+   <a href="{% url 'about'%}">About Us</a>
+
+
+
+
+ </div>
+
+
+<div class="header" style="color:#8b0000;">
+
+    <marquee behaviour="scroll" width="600px;"  height="50px" direction="left"><h1 style="color:#8b0000; font-size:30px;">Tour and Travel</h1></marquee>
+    <p><b><h2>Explore, Wonder and Discover</h2></b></p>
+    <p><h2>We help us to explore your dreams</h2></p>
+
+     <form class="home" action="{% url 'contact' %}" method="post">
+
+         {% csrf_token %}
+     <div class="form-btn">
+								<button class="submit-btn" action="{% url 'contact'%} " style="color: #fff;
+	background-color:#800000;
+	font-weight: 700;
+	height: 60px;
+	padding: 10px 30px;
+	width: 20%;
+	border-radius: 40px;
+	border: none;
+	text-transform: uppercase;
+	font-size: 16px;
+	letter-spacing: 1.3px;
+	-webkit-transition: 0.2s all;
+	transition: 0.2s all;">Contact Us</button>
+          <a style="height:50px; width:20%;border-radius:40px;font-weight:700;font-size:22px;" href="{% url 'dev_info'%}" role="button" class="btn btn-primary">Developer</a>
+
+
+							</div>
+</div>
+</form>
+<div class="container" style="background:rgba(0,0,0,0.5); width:100%; left-margin:50px;">
+    <h2 class="text-center" style="color:white;">Top Tour Places</h2>
+<div class="gallery" style="width:350px;">
+    <img style="width:350px; height:300px;" src="{%static "images/indiagate.jpg"%}" alt="">
+    <div class="desc" style="color:white;">
+        <b>India Gate,Delhi</b><br>
+        <br>
+
+
+    </div>
+</div>
+
+<div class="gallery"  style="width:350px;">
+    <img style="width:350px; height:300px;" src="{%static "images/hawamahal.jpg"%}" alt="">
+
+    <div class="desc" style="color:white;">
+        <b>Hawa Mahal ,Jaipur</b><br>
+        <br>
+
+
+    </div>
+</div>
+
+<div class="gallery"  style="width:350px;">
+    <img style="width:350px; height:300px;" src="{%static "images/tajmahal.jpg"%}" alt="" >
+
+    <div class="desc" style="color:white;">
+        <b>Taj Mahal, Agra(U.P)</b><br>
+        <br>
+
+</div>
+</div>
+</div>
+
+
+
+<div class="container my-3" style="border:1px solid #ddd; height:300px;background-color:white;height:400px;">
+<div class="jumbotron">
+    <h1 class="display-4" ><b>Welcome to Tour Blogs!</b></h1><br>
+  <p class="lead" style="color:black;font-weight:bold;">Welcome to Tour Blogs here you can read many types of tour blogs related to trips.Now Let's enjoy the latest blogs on our site to explore the dreams. </p><br>
+
+  <a class="btn btn-primary btn-lg" href="{%url 'blog'%}" role="button">Read Blogs</a>
+</div>
+</div><br>
+<br>
+
+
+<footer style="height:300px; background: rgba(0,0,0,0.7);">
+    <div class="footer-container" style="height:150px;">
+<div class="left-col" style="font-color:white; height:100px;">
+
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+
+</div>
+         <a href="/gallery"><h1 class="text-center" style="font-size:18px; color:white">Gallery</h1></a>
+    <a href="/allpackages"><h1 class="text-center" style="font-size:18px; color:white">All Packs</h1></a>
+         <a href="/video"><h1 class="text-center" style="font-size:18px; color:white">Videos</h1></a>
+
+        <p class="right-text" style="color:white; font-size:20px;"><b>Created by tour and travel All Rights Reserved.</b> </p>
+         <img src="{% static "images/preview.png"%}" alt="" class="logo">
+    </div>
+
+    <div class="right-col" style="height:120px;">
+        <h1 style="color:white;">Our Newsletter</h1>
+         <div class="border">
+             <p style="color:white;"><b>Enter Your Email to get news and updates.</b></p>
+            <form action="" class="newsletter-form">
+                <input type="text" class="txtb" placeholder="Enter Your Email">
+                <input style="color:black;font-weight:bold;" type="submit" class="btn btn-success" value="submit">
+            </form>
+
+        </div>
+    </div>
+</footer>
+
+</form>
+</body>
+</html>

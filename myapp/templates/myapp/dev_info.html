@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>dev_info</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="{% static "css/style1.css" %}" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <style>
+    header{
+ 	height:650px;}
+ 	.bg{background:rgba(0,0,0,0.5);}
+ 	.form-container{position:absolute;color:white;top:20%;padding:30px;border-radius:10px;box-shadow:0px 0px 10px 0px #000; transform:translate(-50%,-50%);background:rgba(0,0,0,0.7);}
+</style>
+</head>
+
+
+<body background="{%static "images/wal1.jpg"%}" alt="" background-size:cover>
+
+
+
+ <div class="navbar"  style="background: rgba(0,0,0,0.7);">
+   <label class= "logo" ><img src="{%static "images/preview.png"%}" alt=""> </label>
+
+       <a href="{% url 'home'%}"> Home</a>
+ <a href="{% url 'login'%}">Login</a>
+
+      <a href="{% url 'register'%}">Register</a>
+      <a href="{% url 'gallery'%}">Gallery</a>
+     <a href="{% url 'about'%}">About Us</a>
+
+ </div>
+
+<div class="header">
+    <section class="container-fluid">
+    <section class="row justify-content-center">
+        <section class="col-10 col-sm-5 col-md-4 text-white bg">
+               <form method="POST"  enctype="multipart/form-data" class="form-container">
+                     {% csrf_token %}
+                    <div class="form-group">
+                        <label style="color:white; text-decoration:underline;"><h1>Developer Info.</h1></label>
+                        <label><h5>Anjali</h5></label>
+                        <h5>Patel Institute of Management and Technology,Rajpura</h5>
+                        <h5>MCA</h5>
+                         <a href="{% url 'showp'%}" role="button" class="btn btn-primary">Show Profile</a>
+
+					</div>
+               </form>
+        </section>
+    </section>
+    </section>
+    </div>
+<br>
+
+     <div class="container my-4">
+
+<marquee  behaviour="scroll"  width="600px" height="50px" direction="left"> <h4 style="color:white;left:50%;">Mentor's Name: Mrs.Sipika</h4></marquee>
+
+<marquee behaviour="scroll"  width="600px" height="50px" direction="left"><h4 style="color:white;">Technology used: Python</h4></marquee>
+                    </div>
+
+
+</html>

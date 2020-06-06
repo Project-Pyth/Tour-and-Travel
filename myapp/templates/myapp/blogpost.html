@@ -1,0 +1,160 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+      <title>blogpost</title>
+      <style>
+
+
+          .col-md-3
+          {
+          display: inline-block;
+          margin-left:-4px;
+          }
+          .carousel-indicators .active {
+          background-color: blue;
+            }
+          .col-md-3 img{
+           max-width:300px;
+           height:150px;
+          }
+          body .carousel-indicator li{
+          background-color: blue;
+          }
+          body .carousel-indicators{
+          bottom: 0;
+          }
+          body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+          background-color: blue;
+          }
+          .carousel-control-prev,
+          .carousel-control-next{
+           top:auto;
+           bottom:auto;
+           padding-top:280px;
+          }
+           body .no-padding{
+           padding-left: 0,
+           padding-right: 0;
+           }
+
+
+           input[type=text], select, textarea {
+  width:100%; /* Full width */
+  padding: 12px; /* Some padding */
+  border: 1px solid #ccc; /* Gray border */
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure that padding and width stays in place */
+  margin-top: 6px; /* Add a top margin */
+  margin-bottom: 16px; /* Bottom margin */
+  resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+
+}
+container.h2{
+color:#8b0000;
+font-family:'Permanent Marker',cursive;
+}
+
+/* Style the submit button with a specific background color etc */
+input[type=submit] {
+  background-color:#8b0000;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* When moving the mouse over the submit button, add a darker green color */
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Add a background color and some padding around the form */
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+
+
+  </style>
+  </head>
+  <body background="{%static "images/lake.jpg"%}" alt=""background-size:cover>
+<nav style="color:white;text-align:center;font-size:18px;" class="navbar navbar-expand-lg navbar-light bg-dark">
+  <a style="color:#adff2f;font-size:22px; font-weight:bold;" class="navbar-brand" href="#">Tour and Travel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a  style="color:white;" class="nav-link" href="{%url 'home'%}">Home <span class="sr-only"></span></a>
+      </li>
+        <li class="nav-item active">
+        <a  style="color:white;" class="nav-link" href="{%url 'about'%}">AboutUs</a>
+      </li>
+         <li class="nav-item active">
+        <a  style="color:white;" class="nav-link" href="{%url 'contact'%}">ContactUs</a>
+      </li>
+         <li class="nav-item active">
+        <a  style="color:white;" class="nav-link" href="{%url 'package'%}">Tour Packages</a>
+      </li>
+
+
+
+    </ul>
+    <form method="get" action="/search/" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+  </div>
+</nav>
+
+
+
+<marquee bgcolor="#e6e6fa" behaviour="scroll"  height="50px" direction="left"><h2>Recent Blog Posts</h2></marquee>
+
+<div class="row my-4">
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative float-center" style="width:1400px; height:600px;">
+        <div style="background-color:white;" class="col p-4 d-flex flex-column position-static">
+
+          <h3 style="color: blue; font-weight:bold; text-decoration:underline;" class="my-2">{{post.title}}</h3>
+
+          <p style="font-size:22px;" class="card-text mb-auto">{{post.description}}</p>
+
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <img style="border-radius:4px; border:1px solid black;" class="bd-placeholder-img" width="600" height="600" role="img"  src="/media/{{post.Image}}">
+        </div>
+      </div>
+    </div>
+</div>
+
+
+        </div>
+
+      </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+
+
+
+</body>
+</html>
